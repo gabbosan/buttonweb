@@ -25,8 +25,8 @@ function App() {
       link.href = href;
     };
 
-    const fornecedorIcon = '/favicon_az.png';
-    const compradorIcon = '/favicon_am.png';
+    const fornecedorIcon = '/img/favicon.ico';
+    const compradorIcon = '/img/favicon.ico';
 
     if (etapa === 'receber') {
       setFavicon(fornecedorIcon);

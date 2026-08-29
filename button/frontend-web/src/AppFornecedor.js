@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { mensagensLojista } from './mensagensReceber';
 import io from 'socket.io-client';
+import { startFaviconBlink, stopFaviconBlink, setFaviconFillNow } from './utils/faviconLayered';
 
 const defaultUrl = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
@@ -38,8 +39,11 @@ function AppFornecedor() {
 
   useEffect(() => {
     socket.on('mensagem_comprador', (msg) => {
-const text = typeof msg === 'string' ? msg : (msg.text || String(msg));
-setMensagens((prev) => [...prev, { from: 'comprador', text }]);
+      const text = typeof msg === 'string' ? msg : (msg.text || String(msg));
+      setMensagens((prev) => [...prev, { from: 'comprador', text }]);
+      // flash favicon to notify fornecedor
+      startFaviconBlink({ overlayPath: '/src/utils/ic_launcher_bat__round.png', fillColor: '#ffd600', interval: 500 });
+      setTimeout(() => stopFaviconBlink(), 4000);
 });
     return () => { socket.off('mensagem_comprador'); };
   }, []);
