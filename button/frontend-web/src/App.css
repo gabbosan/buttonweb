@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body.pedir {
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  min-height: 100vh;
+}
+body.receber {
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  min-height: 100vh;
+}
+.receber-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fffbe6;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+.pedir-container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fffbe6;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+.receber-container.receber {
+  background: #eaf6ff;
+}
+.receber-header {
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  color: #fff;
+  padding: 20px 0 10px 0;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.receber-header.receber,
+.receber-header {
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.receber-header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.pedir-header {
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  color: #fff;
+  padding: 20px 0 10px 0;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.pedir-header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.receber-messages {
+  flex: 1;
+  padding: 20px;
+  background: #fffbe6;
+}
+.pedir-messages {
+  flex: 1;
+  padding: 20px;
+  background: #fffbe6;
+}
+.receber-messages.painel-branco {
+  background: #fff;
+}
+.receber-messages.receber {
+  background: #eaf6ff;
+}
+.message {
+  max-width: 80%;
+  margin-bottom: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.message.bot {
+  background: #fff;
+  color: #222;
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.receber-container.receber .message.bot {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.message.user {
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+  font-weight: bold;
+}
+.pedir-messages .message.fornecedor {
+  max-width: 100%;
+  align-self: stretch;
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+  white-space: pre-line;
+}
+.receber-messages .message.comprador {
+  max-width: 100%;
+  align-self: stretch;
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.receber-messages .message.fornecedor {
+  max-width: 100%;
+  align-self: stretch;
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+  white-space: pre-line;
+}
+.resposta-comprador {
+  flex-shrink: 0;
+  margin: 0 20px 20px 20px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #ff0000;
+  border-radius: 8px;
+}
+.receber-composer {
+  flex-shrink: 0;
+  padding: 12px 20px;
+  background: #eaf6ff;
+  border-top: 1px solid #00335533;
+  border-radius: 0 0 10px 10px;
+}
+.resposta-comprador label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.resposta-comprador label input {
+  margin-right: 8px;
+}
+.resposta-comprador > input {
+  width: calc(100% - 92px);
+  padding: 9px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.resposta-comprador button {
+  width: 80px;
+  margin-left: 8px;
+  padding: 9px 4px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.resposta-comprador button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.receber-container.receber .message.user {
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  color: #fff;
+}
+.receber-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+.receber-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+.receber-input input:focus {
+  border-color: #667eea;
+}
+.receber-input button {
+  width: 45px;
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.receber-input button:hover {
+  background: #555;
+  transform: scale(1.1);
+}
+/* Catalogo interativo */
+.catalogo-produto {
+  margin-bottom: 24px;
+  padding: 10px 0 0 0;
+}
+.catalogo-opcao {
+  margin: 24px 0 0 12px;
+  display: block;
+}
+.radio-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  margin-right: 8px;
+}
+.radio-label input[type="radio"] {
+  display: none;
+}
+/* Radio custom para pedir: vermelho/amarelo */
+.radio-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ff0000;
+  border-radius: 50%;
+  margin-right: 5px;
+  display: inline-block;
+  position: relative;
+  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+}
+.radio-label input[type="radio"]:checked + .radio-custom {
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  border-color: #ffe600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.receber-container.receber .radio-custom {
+  border: 2px solid #003366;
+}
+.receber-container.receber .radio-label input[type="radio"]:checked + .radio-custom {
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  border-color: #00cfff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+/* Botão padrão: vermelho/amarelo (pedir) */
+.enviar-btn {
+  background: linear-gradient(135deg, #ff0000 0%, #ffe600 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.enviar-btn:hover {
+  background: linear-gradient(135deg, #ffe600 0%, #ff0000 100%);
+  color: #fff;
+}
+
+/* Botão azul escuro/azul celeste para receber */
+.receber-btn {
+  background: linear-gradient(135deg, #003366 0%, #00cfff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.308);
+}
+.receber-btn:hover {
+  background: linear-gradient(135deg, #00cfff 0%, #003366 100%);
+  color: #fff;
+}
+@media (max-width: 600px) {
+  .receber-container,
+  .pedir-container {
+    max-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+  }
+}
