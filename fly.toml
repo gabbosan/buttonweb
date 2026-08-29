@@ -1,0 +1,27 @@
+app = "buttonweb"
+
+[build]
+  image = "node:20-alpine"
+
+[env]
+  PORT = "3000"
+
+[experimental]
+  allowed_public_ports = []
+
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [services.concurrency]
+    type = "connections"
+    soft_limit = 25
+    hard_limit = 50

@@ -38,6 +38,20 @@ app.use((req, res, next) => {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// Serve frontend build if present
+const path = require('path');
+const publicPath = path.join(__dirname, '..', 'public');
+app.use(express.static(publicPath));
+
+// Fallback to index.html for client-side routing
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.startsWith('/socket.io')) return next();
+  const indexFile = path.join(publicPath, 'index.html');
+  res.sendFile(indexFile, (err) => {
+    if (err) next();
+  });
+});
+
 // Rota raiz para status
 app.get('/', (req, res) => {
   res.send('BACKEND BUTTON RODANDO!');
