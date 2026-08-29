@@ -5,6 +5,7 @@ import './App.css';
 import { catalogo } from './catalogo';
 import { mensagensLojista } from './mensagensReceber';
 
+
 function App() {
   // Estrutura: { [nomeProduto]: { [tipo]: quantidade } }
   const [selecoes, setSelecoes] = useState({});
@@ -34,6 +35,16 @@ function App() {
       setFavicon(compradorIcon);
     }
   }, [etapa]);
+
+  // garantir que o favicon padrão seja o único usado (favicon.ico)
+  useEffect(() => {
+    try {
+      const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+      link.rel = 'icon';
+      link.href = '/img/favicon.ico';
+      if (!document.head.contains(link)) document.head.appendChild(link);
+    } catch (e) {}
+  }, []);
 
   const handleSelect = (produto, tipo, quantidade) => {
     setSelecoes((prev) => ({

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { mensagensLojista } from './mensagensReceber';
 import io from 'socket.io-client';
-import { startFaviconBlink, stopFaviconBlink, setFaviconFillNow } from './utils/faviconLayered';
+
 
 const defaultUrl = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
@@ -41,9 +41,13 @@ function AppFornecedor() {
     socket.on('mensagem_comprador', (msg) => {
       const text = typeof msg === 'string' ? msg : (msg.text || String(msg));
       setMensagens((prev) => [...prev, { from: 'comprador', text }]);
-      // flash favicon to notify fornecedor
-      startFaviconBlink({ overlayPath: '/src/utils/ic_launcher_bat__round.png', fillColor: '#ffd600', interval: 500 });
-      setTimeout(() => stopFaviconBlink(), 4000);
+      // apenas garantir favicon padrão (favicon.ico) — sem animações
+      try {
+        const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+        link.rel = 'icon';
+        link.href = '/img/favicon.ico';
+        if (!document.head.contains(link)) document.head.appendChild(link);
+      } catch (e) {}
 });
     return () => { socket.off('mensagem_comprador'); };
   }, []);
